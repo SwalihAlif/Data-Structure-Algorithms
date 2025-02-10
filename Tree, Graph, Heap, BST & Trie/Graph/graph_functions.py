@@ -1,5 +1,4 @@
 from collections import deque
-# hello
 class Graph:
     def __init__(self):
         self.adj_list = {}
