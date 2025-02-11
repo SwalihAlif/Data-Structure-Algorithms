@@ -133,6 +133,18 @@ class BinarySearchTree:
         if node.left:
             self.print_bst_visual(node.left, level+1, 'L--- ')
 
+    def __is_bst(self, root, min_value, max_value):
+
+        if root is None:
+            return True
+        
+        if not (min_value < root.value < max_value):
+            return False
+        
+        return self.__is_bst(root.left, min_value, root.value) and self.__is_bst(root.right, root.value, max_value)
+    def is_bst(self):
+        return self.__is_bst(self.root, float('-inf'), float('inf'))
+
 bst = BinarySearchTree()
 bst.r_insert(10)
 bst.r_insert(5)
@@ -154,4 +166,6 @@ print('------------------------------------------------')
 print('dfs post order:', bst.dfs_post_order())
 print('------------------------------------------------')
 print('dfs post order:', bst.dfs_in_order())
+print('------------------------------------------------')
+print('Is it a BST: ', bst.is_bst())
 print('------------------------------------------------')
