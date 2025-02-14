@@ -76,23 +76,24 @@ class Graph:
     
     def dfs_postorder(self, start_vertex):
         visited = set()
-        stack = [start_vertex]
-        processed = []  # This stack helps in postorder processing
+        stack = [(start_vertex, False)]  # (vertex, is_processed)
+        result = []
 
         while stack:
-            vertex = stack.pop()
-            if vertex not in visited:
-                visited.add(vertex)
-                processed.append(vertex)  # Process node later (Postorder)
+            vertex, is_processed = stack.pop()
+            if vertex not in visited or is_processed:
+                if is_processed:
+                    result.append(vertex)
+                else:
+                    visited.add(vertex)
+                    stack.append((vertex, True))  # Mark vertex for processing later
+                    for neighbor in self.adj_list[vertex]:
+                        if neighbor not in visited:
+                            stack.append((neighbor, False))
+        
+        return result
 
-            # Push neighbors onto the stack
-                for neighbor in self.adj_list[vertex]:  
-                    if neighbor not in visited:
-                        stack.append(neighbor)
 
-        return processed[::-1]  # Reverse to get Postorder traversal
-
-    
     # no in_order in graph
     #Preorder and Postorder exist, but Inorder doesn’t because graphs aren’t always binary and don’t have a strict left/right order.
 
