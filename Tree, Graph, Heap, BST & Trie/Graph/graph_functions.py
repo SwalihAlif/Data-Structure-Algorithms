@@ -60,7 +60,7 @@ class Graph:
         
         return result
     
-    def dfs(self, start_vertex):
+    def dfs_preorder(self, start_vertex):
         visited = set()
         stack = [start_vertex]
         result = []
@@ -73,6 +73,28 @@ class Graph:
                 stack.extend([neighbor for neighbor in self.adj_list[vertex] if neighbor not in visited])
         
         return result
+    
+    def dfs_postorder(self, start_vertex):
+        visited = set()
+        stack = [start_vertex]
+        processed = []  # This stack helps in postorder processing
+
+        while stack:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                processed.append(vertex)  # Process node later (Postorder)
+
+            # Push neighbors onto the stack
+                for neighbor in self.adj_list[vertex]:  
+                    if neighbor not in visited:
+                        stack.append(neighbor)
+
+        return processed[::-1]  # Reverse to get Postorder traversal
+
+    
+    # no in_order in graph
+    #Preorder and Postorder exist, but Inorder doesn’t because graphs aren’t always binary and don’t have a strict left/right order.
 
     def shortest_path(self, start_vertex, end_vertex):
         queue = [(start_vertex, [start_vertex])]
