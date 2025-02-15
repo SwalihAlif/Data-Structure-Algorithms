@@ -28,7 +28,7 @@ class Trie:
         for char in prefix:
             if char not in node.children:
                 return False
-            node = node.children[char]
+            node = node.children[char] 
         return True  # Prefix found
 
 # Usage Example:

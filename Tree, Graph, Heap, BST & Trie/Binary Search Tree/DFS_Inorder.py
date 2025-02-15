@@ -107,7 +107,7 @@ class BinarySearchTree:
             if current_node.right is not None:
                 traverse(current_node.right)
         traverse(self.root)
-        return results
+        return results 
         
     def print_bst(self):
         def normal_print(node):

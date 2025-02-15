@@ -50,7 +50,7 @@ class BinaryTree:
             node = self.root
             if not node:
                 print('Tree is empty.')
-                return
+                return 
             
         if node.right:
             self.print_bt(node.right, level+1, 'R--- ')

@@ -13,7 +13,7 @@ class Graph:
             
             return True 
         return False
-        
+        a
     def add_edge(self, v1, v2):
         if v1 == v2:
             print(f"Error: Cannot add self-loop for vertex {v1}")
@@ -89,7 +89,7 @@ class Graph:
                     stack.append((vertex, True))  # Mark vertex for processing later
                     for neighbor in self.adj_list[vertex]:
                         if neighbor not in visited:
-                            stack.append((neighbor, False))
+                            stack.append((neighbor, False)) 
         
         return result
 
