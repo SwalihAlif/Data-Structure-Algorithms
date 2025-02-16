@@ -30,6 +30,16 @@ class Trie:
                 return False
             node = node.children[char] 
         return True  # Prefix found
+    
+    def print_trie(self, node=None, word=''):
+        if not node:
+            node = self.root
+            
+        if node.is_end_of_word:
+            print(word)
+            
+        for char, child in node.children.items():
+            self.print_trie(child, word + char)
 
 # Usage Example:
 trie = Trie()
@@ -39,3 +49,4 @@ print(trie.search("app"))     # ❌ False
 print(trie.startsWith("app")) # ✅ True
 trie.insert("app")
 print(trie.search("app"))     # ✅ True
+trie.print_trie()
