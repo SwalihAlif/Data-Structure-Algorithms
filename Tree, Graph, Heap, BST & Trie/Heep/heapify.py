@@ -65,6 +65,20 @@ class MaxHeap:
         """Converts an unordered array into a valid MaxHeap."""
         for i in range(len(self.heap) // 2, -1, -1):
             self._sink_down(i)
+        
+    def print_heap(self, index=0, level=0, prefix="Root: "):
+        if index >= len(self.heap):  # Fixed condition
+            return
+        
+        right = self._right_child(index)
+        if right < len(self.heap):
+            self.print_heap(right, level + 1, "R--- ")
+
+        print("   " * level + prefix + str(self.heap[index]))
+
+        left = self._left_child(index)
+        if left < len(self.heap):
+            self.print_heap(left, level + 1, "L--- ")
 
 # Example usage
 myheap = MaxHeap()
@@ -73,6 +87,7 @@ print(myheap.heap)
 myheap.heapify()  # Converts it into a max heap
 
 print("Heap after heapify:", myheap.heap)
+myheap.print_heap()
 
 sorted_array = myheap.heap_sort()
 print("Sorted Array:", sorted_array)
