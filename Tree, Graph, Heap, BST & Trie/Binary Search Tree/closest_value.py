@@ -33,7 +33,7 @@ class BinarySearchTree:
             self.print_bst(node.left, level+1, 'L--- ')
         
     def find_closest_value(self, root, target):
-        if not self.root:
+        if not root:
             return None
             
         def dfs(node, closest):
@@ -58,7 +58,7 @@ for i in values:
     
 my_bst.print_bst()
 
-targets = [6, 17, 39, 28, 60]
+targets = [6, 17, 39, 28, 60, 70]
 
 for t in targets:
     closest = my_bst.find_closest_value(my_bst.root, t)

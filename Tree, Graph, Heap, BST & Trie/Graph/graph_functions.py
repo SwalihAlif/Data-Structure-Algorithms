@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque # builtin module for dequeue
 class Graph:
     def __init__(self):
         self.adj_list = {}
