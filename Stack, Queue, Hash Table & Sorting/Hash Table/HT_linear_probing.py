@@ -1,6 +1,6 @@
 class HashTable:
     def __init__(self, size=7):
-        self.data_map = [None] * size  # Directly store (key, value) pairs
+        self.data_map = [None] * size  # Directly store (key, value) pairs   
         self.size = size
 
     def print_table(self):
