@@ -6,8 +6,8 @@ def linear_search(arr, target):
     return -1
 
 
-arr = [7, 3, 2, 8, 9]
-key = 90
+arr = [7, 3, 9, 2, 8, 9]
+key = 9
 
 result = linear_search(arr, key)
 if result != -1:

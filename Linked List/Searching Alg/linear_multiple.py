@@ -7,7 +7,7 @@ def linear_search(arr, target):
     return indices
 
 arr = [1, 8, 9, 1, 5, 2]
-key = 1
+key = 10
 
 result = linear_search(arr, key)
 if result:
