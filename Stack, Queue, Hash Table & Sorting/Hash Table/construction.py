@@ -1,5 +1,5 @@
 class HashTable:
-    def __init__(self, size = 7):
+    def __init__(self, size = 10):
         self.data_map = [None] * size
         
     def print_table(self):
@@ -31,8 +31,8 @@ class HashTable:
 my_hash_table = HashTable()
 my_hash_table.print_table()
 print('-------------------------------')
-my_hash_table.insert_item('mango', 45)
-my_hash_table.insert_item('apple', 450)
+my_hash_table.insert_item('march 6', 45)
+my_hash_table.insert_item('march 17', 450)
 my_hash_table.insert_item('pine apple', 145)
 my_hash_table.print_table()
 print('-------------------------------')
