@@ -46,6 +46,9 @@ class HashTable:
 
 t = HashTable()
 t.__setitem__('march 6', 45)
+t.__setitem__('march 12', 457)
+t.__setitem__('march 14', 435)
+t.__setitem__('march 5', 145)
 t.__setitem__('march 17', 450)
 t.__setitem__('march 19', 500)
 t.__setitem__('march 6', 455)
