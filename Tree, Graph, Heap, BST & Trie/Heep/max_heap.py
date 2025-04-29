@@ -59,6 +59,22 @@ class MaxHeap:
         while self.heap:
             sorted_array.append(self.remove())
         return sorted_array[::-1]  # Reverse to get ascending order
+    
+    def print(self):
+        def print_heap(heap, index=0, level=0, prefix="Root: "):
+            if index >= len(heap):
+                return
+            
+            right = 2 * index + 2
+            left = 2 * index + 1
+            
+            if right < len(heap):
+                print_heap(heap, right, level + 1, "R---")
+            print("  " * level + prefix + str(heap[index]))
+            if left < len(heap):
+                print_heap(heap, left, level + 1, 'L---')
+                
+        print_heap(self.heap)
 
 myheap = MaxHeap()
 myheap.insert(95)
@@ -77,5 +93,6 @@ print(myheap.heap)
 myheap.remove()
 print(myheap.heap)
 
+myheap.print()
 sorted_array = myheap.heap_sort()
 print("Sorted Array:", sorted_array)
