@@ -9,7 +9,5 @@ def insertion_sort(my_list):
             
     return my_list
     
-my_list = [5,3,1, 2,6, 7, 4]
-
+my_list = [5, 3, 1, 2, 6, 7, 4]
 print(insertion_sort(my_list))
-
