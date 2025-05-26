@@ -49,7 +49,9 @@ class BinaryTree:
             return -1
             
         left_height = self.get_height(node.left)
+        print("left: ",left_height)
         right_height = self.get_height(node.right)
+        print("right: ",right_height)
         return 1 + max(left_height, right_height)
             
             

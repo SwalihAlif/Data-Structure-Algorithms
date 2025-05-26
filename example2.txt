@@ -1,0 +1,2 @@
+Hello, this the first line in example2.txt. 
+This is the second linethis is the third lineThis is the forth line
