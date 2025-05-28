@@ -121,7 +121,18 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-  
+    def insert_after(self, prev_node_value, value):
+        current = self.head
+        while current and current.value != prev_node_value:
+            current = current.next
+            
+            if current is None:
+                print("Cant find prev node")
+                return None
+        new_node = Node(value)
+        new_node.next = current.next
+        current.next = new_node
+        return True
 
 
 
