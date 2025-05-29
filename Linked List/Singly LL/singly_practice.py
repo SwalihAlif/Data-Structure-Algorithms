@@ -133,6 +133,28 @@ class LinkedList:
         new_node.next = current.next
         current.next = new_node
         return True
+    def insert_before_node(self, target_value, value):
+        if self.head is None:
+            return None
+        new_node = Node(value)
+        if self.head.value == target_value:
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+            return True
+        
+        prev = self.head
+        while prev.next and prev.next.value != target_value:
+            prev = prev.next
+        if not prev.next:
+            print("Couldn't find")
+            return None
+        
+        new_node.next = prev.next
+        prev.next = new_node
+        self.length += 1
+        return True
+
 
 
 
@@ -153,6 +175,8 @@ my_ll.prepend(4)
 my_ll.print_list()
 my_ll.prepend(3)
 my_ll.print_list()
-my_ll.insert(12, 69)
+my_ll.insert(2, 69)
+my_ll.print_list()
+my_ll.insert_before_node(5, 70)
 my_ll.print_list()
 
