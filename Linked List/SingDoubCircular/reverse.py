@@ -2,19 +2,20 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
-        
+        self.prev = None
 class Singly:
     def __init__(self):
         self.head = None
         self.tail = None
         self.length = 0
+        
     def print_list(self):
         current = self.head
         while current:
             print(current.value, end=" -> ")
             current = current.next
         print(None)
+    
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -37,7 +38,8 @@ class Singly:
         return True
     def insert(self, position, value):
         if position < 0 or position > self.length:
-            return False
+            print("Out of Index")
+            return
         if position == 0:
             self.prepend(value)
             return True
@@ -49,15 +51,45 @@ class Singly:
             current = current.next
         new_node = Node(value)
         new_node.next = current.next
-        current = new_node
-        if current.next:
-            current.next.prev = new_node # if doubly 
-        else:
+        current.next = new_node
+        if new_node.next is None:
             self.tail = new_node
         self.length += 1
+        return True
         
+    def remove_nth_from_end(self, n):
+        dummy = Node(0)
+        dummy.next = self.head
+        slow = fast = dummy
+        for _ in range(n):
+            if fast.next is None:
+                return None
+            fast = fast.next
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+        target = slow.next
+        slow.next= target.next
+        self.length -= 1
+        if self.head == target:
+            self.head = self.head.next
+        if self.tail == target:
+            self.tail = slow
+        print("Removed nth from end: ", target.value)
+        return target.value
+        
+    def reverse_recursive(self):
+        def _reverse(node, prev=None):
+            if not node:
+                return prev
+            next_node = node.next
+            node.next = prev
+            return _reverse(next_node, node)
+        self.tail = self.head
+        self.head = _reverse(self.head)
+
 def detect_linked_list_type(head):
-    if head is None:
+    if not head:
         return "Empty List"
     #checking for circularity
     is_circular = False
@@ -82,21 +114,19 @@ def detect_linked_list_type(head):
                 break
             current = current.next
     if is_doubly and is_circular:
-        return "Doubly circular"
+        return "Its Doubly Circular Linked List"
     elif is_circular:
-        return "Circular"
+        return "It's Circular Linked List"
     elif is_doubly:
-        return "Doubly"
+        return "It's Doubly Linked List"
     else:
-        return "Singly"
-
-
+        return "It's Singly Linked List"
+    
+        
 sll = Singly()
 sll.append(40)
 sll.append(50)
 sll.append(60)
-sll.append(70)
-sll.append(80)
 sll.print_list()
 print("Head: ", sll.head.value)
 print("Tail: ", sll.tail.value)
@@ -108,10 +138,18 @@ sll.print_list()
 print("Head: ", sll.head.value)
 print("Tail: ", sll.tail.value)
 print("Length: ", sll.length)
-sll.insert(8, 90)
+sll.insert(6, 70)
 sll.print_list()
 print("Head: ", sll.head.value)
 print("Tail: ", sll.tail.value)
 print("Length: ", sll.length)
-result = detect_linked_list_type(sll.head)
-print(result)
+sll.remove_nth_from_end(1)
+sll.print_list()
+print("Head: ", sll.head.value)
+print("Tail: ", sll.tail.value)
+print("Length: ", sll.length)
+sll.reverse_recursive()
+sll.print_list()
+print("Head: ", sll.head.value)
+print("Tail: ", sll.tail.value)
+print("Length: ", sll.length)
