@@ -19,7 +19,7 @@ class Stack:
         while temp is not None:
             print(temp.value)
             if temp.next:
-                print("↓")
+                print("↓") 
             temp = temp.next
         print("Bottom")
 
